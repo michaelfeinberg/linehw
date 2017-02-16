@@ -23,9 +23,9 @@ int main() {
     while(j < 5){
       x0 = i*100;
       y0 = j*100;
-      c.red = x0;
-      c.green = y0;
-      c.blue = y0 - x0;
+      c.red = x0%256;
+      c.green = y0%256;
+      c.blue = (y0 - x0)%256;
       
       x1 = 0;
       y1 = 250;
@@ -36,10 +36,24 @@ int main() {
       }
       x1 = 0;
       y1 = 250;
-      while(y1 < 500){
+      while(y1 > 0){
         draw_line(x0,y0,x1,y1,s,c);
 	x1+=5;
 	y1-=5;
+      }
+      x1 = 500;
+      y1 = 250;
+      while(y1 < 500){
+        draw_line(x0,y0,x1,y1,s,c);
+        x1-=5;
+        y1+=5;
+      }
+      x1 = 500;
+      y1 = 250;
+      while(y1 > 0){
+        draw_line(x0,y0,x1,y1,s,c);
+        x1-=5;
+        y1-=5;
       }
       j++;
     }
